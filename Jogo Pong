@@ -1,0 +1,128 @@
+let xbol=200;
+let ybol=200;
+let diametro=30;
+let velocx=6;
+let velocy=6;
+
+let raqx=10;
+let raqy=150;
+let raql=10;
+let raqh=90;
+
+let raqxo=585;
+let raqyo=150;
+let raqlo=10;
+let raqho=90;
+
+let raio=diametro/2;
+let velocopo;
+let colidiu = false;
+let player1=0
+let player2=0
+//sons do jogo
+let raquetada
+let ponto
+let trilha
+let explosao
+let risada
+let chanceDeErrar = 0;
+
+function preload(){
+  
+  raquetada=loadSound("raquetada.mp3");
+  risada=loadSound("risada.mp3");
+  ponto=loadSound("ponto.mp3"); 
+  trilha=loadSound("trilha.mp3");
+  cav=loadImage("justiceiro.png");
+  explosao=loadSound("explosao.mp3");
+}
+
+function setup() { 
+  createCanvas(600, 400);
+trilha.loop();}
+ 
+function draw() {
+  quadra();
+  mostraraq(raqx,raqy);
+  mostraraq(raqxo,raqyo);
+  //doisjogadores()
+  p1()
+  mostrabola();
+  movbola();
+  colisao();
+  p2()
+  marcaPonto();
+  colisaoRaqueteBiblioteca();
+  colisaoRaqueteBibliotecao()
+  placar()
+  
+  
+  
+ 
+  
+  
+  
+   
+  
+  
+  
+ 
+    
+
+function quadra(){
+background(cav);
+stroke("white"); 
+line(300,0,300,400);}
+
+function mostraraq(x,y){fill("red");rect(x, y, raql, raqh) }
+
+function p1(){  
+if(keyIsDown(87)){raqy-=10; }
+if(keyIsDown(83)){raqy+=10;}}
+
+  
+function p2(){ 
+if(keyIsDown(UP_ARROW)){raqyo-=10;}
+if(keyIsDown(DOWN_ARROW)){raqyo+=10; }}
+  
+  
+function mostrabola(){ 
+fill("yellow"); circle(xbol,ybol,diametro);}
+
+function movbola(){xbol+=velocx; ybol+=velocy; }
+
+function colisao(){
+if (xbol+raio>width || xbol-raio<0){velocx*=-1; }
+if (ybol+raio>height || ybol-raio<0){velocy*=-1; }}
+
+ 
+
+  
+function colisaoRaqueteBiblioteca() {
+   colidiu = collideRectCircle(raqx, raqy, raql, raqh, xbol, ybol, diametro);}
+    if (colidiu) {velocx *= -1;
+    raquetada.play();}}
+
+function colisaoRaqueteBibliotecao() {
+   colidiu = collideRectCircle(raqxo, raqyo, raqlo, raqho, xbol, ybol, diametro);}
+    if (colidiu) {velocx *= -1;
+    raquetada.play();}
+
+
+function placar(){
+  fill(255);
+  textAlign(CENTER);
+  textSize(18);
+  text(player1, 278, 30);
+  text(player2, 321, 30)}
+
+function marcaPonto(){
+ if (xbol ==590){player1 += 2;
+  risada.play();}
+  if (xbol ==10){player2 += 1;
+  explosao.play();}}
+
+  
+
+
+
