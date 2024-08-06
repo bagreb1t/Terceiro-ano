@@ -25,17 +25,10 @@ let trilha;
 let explosao;
 let risada;
 
-function preload(){
-  raquetada=loadSound("raquetada.mp3");
-  risada=loadSound("risada.mp3");
-  ponto=loadSound("ponto.mp3"); 
-  trilha=loadSound("trilha.mp3");
-  cav=loadImage("justiceiro.png");
-  explosao=loadSound("explosao.mp3");}
+
 
 function setup() { 
-createCanvas(600, 400);
-trilha.loop();}
+createCanvas(600, 400);}
  
 function draw() {
   quadra();
@@ -47,23 +40,11 @@ function draw() {
   movbola();
   colisao();
   colisaoRaquete(raqx,raqy);
-  colisaoRaquete(raqxo,raqyo);
-  placar()
-  pontos();}
+  colisaoRaquete(raqxo,raqyo) ;}
   
   
   
  
-  
-  
-  
-   
-  
-  
-  
- 
-    
-
 function quadra(){
 background(cav);
 stroke("white"); 
@@ -92,23 +73,10 @@ if (ybol+raio>height || ybol-raio<0){velocy*=-1; }}
 
 function colisaoRaquete(x,y) {
 colidiu = collideRectCircle(x, y, raql, raqh, xbol, ybol, diametro);
-  if (colidiu) {
-  velocx *= -1;
-  raquetada.play();}}
+if (colidiu) { velocx *= -1;}}
 
 
-function placar(){
-  fill(255);
-  textAlign(CENTER);
-  textSize(18);
-  text(player1, 278, 30);
-  text(player2, 321, 30)}
 
-function pontos(){
- if (xbol ==590){player1 += 1;
-  risada.play();}
-  if (xbol ==10){player2 += 1;
-  explosao.play();}}
 
   
 
