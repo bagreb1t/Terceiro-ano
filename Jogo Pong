@@ -38,9 +38,7 @@ function draw() {
   jogador2();
   mostrabola();
   movbola();
-  colisao();
-  colisaoRaquete(raqx,raqy);
-  colisaoRaquete(raqxo,raqyo) ;}
+  colisao(); }
   
   
   
@@ -71,8 +69,8 @@ if (xbol+raio>width || xbol-raio<0){velocx*=-1; }
 if (ybol+raio>height || ybol-raio<0){velocy*=-1; }}
 
 
-function colisaoRaquete(x,y) {
-colidiu = collideRectCircle(x, y, raql, raqh, xbol, ybol, diametro);
+function colisaoRaquete() {
+colidiu = collideRectCircle(raqx, raqy, raql, raqh, xbol, ybol, diametro);
 if (colidiu) { velocx *= -1;}}
 
 
