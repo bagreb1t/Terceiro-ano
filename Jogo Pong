@@ -20,10 +20,7 @@ let player1=0;
 let player2=0;
 //sons do jogo
 let raquetada;
-let ponto;
-let trilha;
-let explosao;
-let risada;
+
 
 
 
@@ -44,7 +41,7 @@ function draw() {
   
  
 function quadra(){
-background(cav);
+background(0);
 stroke("white"); 
 line(300,0,300,400);}
 
